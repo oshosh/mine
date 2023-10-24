@@ -1,6 +1,6 @@
-import { Props } from '@/app/types/common';
+import { DefaultProps } from '@/app/types/common';
 
-export default function Layout({ children, modal }: Props) {
+export default function Layout({ children, modal }: DefaultProps) {
   return (
     <div>
       {children}

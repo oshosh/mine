@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface Props {
+export interface DefaultProps {
   children: ReactNode;
   modal?: ReactNode;
 }
