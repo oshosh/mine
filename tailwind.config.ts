@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -9,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'shadow-custom': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
+      },
+      colors: {
+        'dark-purple': '#22194D',
+      },
       animation: {
         typing: 'keyword-typing-effect 0.1s linear infinite',
       },
@@ -28,17 +33,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    plugin(function ({ addUtilities }: any) {
-      // 커스텀 클래스 정의
-      const shadowCustom = {
-        '.shadow-custom': {
-          'box-shadow': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
-        },
-      };
-
-      addUtilities(shadowCustom);
-    }),
-  ],
+  plugins: [],
 };
 export default config;

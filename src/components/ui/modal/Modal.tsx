@@ -17,13 +17,13 @@ export default function Modal({ onClose, children, opened = false, id }: ModalPr
     <>
       <div
         id={id}
-        className={`box-border fixed inset-x-0 inset-y-0 bg-black bg-opacity-60 z-999 ${
+        className={`box-border fixed inset-x-0 inset-y-0 bg-black bg-opacity-60 z-[999] ${
           opened ? 'block' : 'hidden'
         }
          `}
       />
       <div
-        className={`box-border fixed inset-x-0 inset-y-0 z-1000 overflow-auto ${
+        className={`box-border fixed inset-x-0 inset-y-0 z-[1000] overflow-auto ${
           opened ? 'block' : 'hidden'
         }`}
         tabIndex={-1}

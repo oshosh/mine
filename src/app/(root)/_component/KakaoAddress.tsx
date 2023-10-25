@@ -1,5 +1,5 @@
 'use client';
-import Modal from '@/app/component/Modal';
+import Modal from '@/components/ui/modal/Modal';
 import { useModalStore } from '@/store/modal';
 import DaumPostcode from 'react-daum-postcode';
 
