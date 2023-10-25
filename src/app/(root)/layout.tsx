@@ -1,6 +1,10 @@
-import { DefaultProps } from '@/app/types/common';
+import { PropsWithChildren, ReactNode } from 'react';
 
-export default function Layout({ children, modal }: DefaultProps) {
+interface LayoutProps {
+  modal: ReactNode;
+}
+
+export default function Layout({ children, modal }: PropsWithChildren<LayoutProps>) {
   return (
     <div>
       {children}
