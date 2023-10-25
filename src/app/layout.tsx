@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
-  title: env.NEXT_PUBLIC_APP_URL === 'production' ? '오세현 | front-end developer' : 'local12',
+  title: '오세현 | front-end developer',
   description: '오세현 | front-end developer 포트폴리오',
   keywords: ['프론트엔드, FE, React, Vue, Next.js, front-end'],
   icons: {
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
+      {env.NEXT_PUBLIC_APP_URL}
       <body className={inter.className}>{children}</body>
     </html>
   );
