@@ -8,11 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        'shadow-custom': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
-      },
+      // boxShadow: {
+      //   'over-lay': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
+      // },
       colors: {
         'dark-purple': '#22194D',
+        'over-lay': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
       },
       animation: {
         typing: 'keyword-typing-effect 0.1s linear infinite',
