@@ -10,16 +10,17 @@ export const KeywordAnimation = () => {
   const delayLetter = () => new Promise((resolve) => setTimeout(resolve, 100));
   const delayWord = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const { data } = useQuery<any>({
+  const {
+    data: { contents },
+  } = useQuery<any>({
     queryKey: ['keyword'],
     queryFn: getKeyword,
   });
-  console.log(data);
 
   const keywordAnimation = async (loopCount = 0) => {
     let textSplit: string[][] = [];
     let count = 0;
-    const mainKeywordArray = ['깊이있게 탐구하는', '끈기있게 노력하는', '문서화를 잘하는'];
+    const mainKeywordArray = [...contents];
 
     textSplit = mainKeywordArray.reduce((acc: string[][], cur: string) => {
       let obj: string[][] = [];
@@ -66,6 +67,7 @@ export const KeywordAnimation = () => {
           clipPath: 'polygon(0 0, 0 0, 0 0)',
         }}
       ></span>
+      123
       {mainKeyWord && <span ref={mainKeyWord} className='pr-1 font-semibold animate-typing'></span>}
     </>
   );
