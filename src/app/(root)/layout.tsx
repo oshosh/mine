@@ -1,4 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
+import ReactQueryProvider from './_component/ReactQueryProvider';
 
 interface LayoutProps {
   modal: ReactNode;
@@ -6,9 +7,9 @@ interface LayoutProps {
 
 export default function Layout({ children, modal }: PropsWithChildren<LayoutProps>) {
   return (
-    <div>
+    <ReactQueryProvider>
       {children}
       {modal}
-    </div>
+    </ReactQueryProvider>
   );
 }
