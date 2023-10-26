@@ -20,9 +20,8 @@ export const KeywordAnimation = () => {
   const keywordAnimation = async (loopCount = 0) => {
     let textSplit: string[][] = [];
     let count = 0;
-    const mainKeywordArray = [...contents];
 
-    textSplit = mainKeywordArray.reduce((acc: string[][], cur: string) => {
+    textSplit = [...contents].reduce((acc: string[][], cur: string) => {
       let obj: string[][] = [];
       obj.push(cur.split(''));
       acc = acc.concat(obj);
@@ -67,7 +66,6 @@ export const KeywordAnimation = () => {
           clipPath: 'polygon(0 0, 0 0, 0 0)',
         }}
       ></span>
-      123
       {mainKeyWord && <span ref={mainKeyWord} className='pr-1 font-semibold animate-typing'></span>}
     </>
   );

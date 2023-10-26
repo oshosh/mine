@@ -3,7 +3,7 @@ import { QueryFunction } from '@tanstack/query-core';
 import { KeywordItem } from '../../../../service/api';
 
 const getKeyword: QueryFunction<KeywordItem> = async ({ queryKey }) => {
-  const res = await fetch(`${env.NEXT_PUBLIC_APP_URL}`, {
+  const res = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/keyword`, {
     cache: 'no-store',
   });
 

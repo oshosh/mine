@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: '오세현 | front-end developer 포트폴리오',
   keywords: ['프론트엔드, FE, React, Vue, Next.js, front-end'],
   icons: {
-    icon: '/public/favicon.ico',
+    icon: '/static/favicon.ico',
   },
   openGraph: {
     type: 'website',
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
+      <link rel='icon' type='image/x-icon' href='/static/favicon.ico'></link>
       <body className={inter.className}>{children}</body>
     </html>
   );
