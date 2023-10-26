@@ -1,5 +1,7 @@
 'use client';
+import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
+import { getKeyword } from '../_lib/getKeyword';
 
 export const KeywordAnimation = () => {
   const mainKeyWord = useRef<HTMLSpanElement | null>(null);
@@ -7,6 +9,12 @@ export const KeywordAnimation = () => {
 
   const delayLetter = () => new Promise((resolve) => setTimeout(resolve, 100));
   const delayWord = () => new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const { data } = useQuery<any>({
+    queryKey: ['keyword'],
+    queryFn: getKeyword,
+  });
+  console.log(data);
 
   const keywordAnimation = async (loopCount = 0) => {
     let textSplit: string[][] = [];

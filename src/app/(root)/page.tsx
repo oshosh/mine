@@ -1,14 +1,25 @@
 import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
 import { Button, buttonVariants } from '@/components/ui/button/Button';
-import { cn } from '@/lib/utils';
+import { cn, getQueryClient } from '@/lib/utils';
+import { getKeyword } from './_lib/getKeyword';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
-export default function Home() {
+export default async function Page() {
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['keyword'],
+    queryFn: getKeyword,
+  });
+  const dehydratedState = dehydrate(queryClient);
+
   return (
     <div className='flex flex-col'>
       <div>Root Home</div>
       <KakaoAddressWrapper />
-      <KeywordAnimation />
+      <HydrationBoundary state={dehydratedState}>
+        <KeywordAnimation />
+      </HydrationBoundary>
       <br />
       테스트
       <Button
