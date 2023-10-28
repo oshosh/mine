@@ -1,9 +1,14 @@
 'use client';
 
-import React, { PropsWithChildren, Suspense, useState } from 'react';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { env } from '@/env.mjs';
+import { dynamicNamedImport } from '@/lib/dynamicImport';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PropsWithChildren, useState } from 'react';
+
+const ReactQueryDevtools = dynamicNamedImport(
+  () => import('@tanstack/react-query-devtools/build/modern/production.js'),
+  'ReactQueryDevtools'
+);
 
 function ReactQueryProvider({ children }: PropsWithChildren) {
   const [client] = useState(

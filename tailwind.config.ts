@@ -8,11 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // boxShadow: {
-      //   'over-lay': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
-      // },
       colors: {
         'dark-purple': '#22194D',
+        'light-purple': '#A2A1DC',
         'over-lay': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
       },
       animation: {

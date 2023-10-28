@@ -1,9 +1,10 @@
-import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
+import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 import { Button, buttonVariants } from '@/components/ui/button/Button';
+import { HighlightText } from '@/components/ui/highlight-text/HighlightText';
 import { cn, getQueryClient } from '@/lib/utils';
-import { getKeyword } from './_lib/getKeyword';
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import { getKeyword } from './_lib/getKeyword';
 
 export default async function Page() {
   const queryClient = getQueryClient();
@@ -34,6 +35,7 @@ export default async function Page() {
       <Button asChild className='flex justify-center'>
         <a href='https://github.com/oshosh'> 테스트</a>
       </Button>
+      <HighlightText msg='ABOUT ME' search=' B U   E' effectColor='boldLightPurple' />
     </div>
   );
 }
