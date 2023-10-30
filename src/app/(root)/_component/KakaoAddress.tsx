@@ -1,8 +1,10 @@
 'use client';
-import Modal from '@/components/ui/modal/Modal';
-import { useModalStore } from '@/store/modal';
+
 import { useMemo } from 'react';
+import { useModalStore } from '@/store/modal';
 import DaumPostcode from 'react-daum-postcode';
+
+import Modal from '@/components/ui/modal/Modal';
 
 interface AddressProps {
   address: string;

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { getKeyword } from '../../../../service/api';
 
 export async function GET(req: Request) {

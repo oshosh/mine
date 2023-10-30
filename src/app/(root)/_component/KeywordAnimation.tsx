@@ -1,6 +1,8 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
+
 import { useEffect, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+
 import { getKeyword } from '../_lib/getKeyword';
 import { KeywordItem } from '../../../../service/api';
 
@@ -60,13 +62,13 @@ export const KeywordAnimation = () => {
   return (
     <>
       <span
-        className='pr-1 font-semibold animate-typing absolute w-1 h-1 invisible'
+        className='invisible absolute h-1 w-1 animate-typing pr-1 font-semibold'
         style={{
           clip: 'rect(0, 0, 0, 0)',
           clipPath: 'polygon(0 0, 0 0, 0 0)',
         }}
       ></span>
-      {mainKeyWord && <span ref={mainKeyWord} className='pr-1 font-semibold animate-typing'></span>}
+      {mainKeyWord && <span ref={mainKeyWord} className='animate-typing pr-1 font-semibold'></span>}
     </>
   );
 };

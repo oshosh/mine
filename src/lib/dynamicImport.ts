@@ -1,5 +1,4 @@
 import { ComponentType } from 'react';
-
 import dynamic, { DynamicOptions } from 'next/dynamic';
 
 type InferComponentProps<P> = P extends ComponentType<infer T> ? T : never;

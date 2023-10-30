@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
 import './globals.css';
+
 import { PropsWithChildren } from 'react';
 import { env } from '@/env.mjs';
 

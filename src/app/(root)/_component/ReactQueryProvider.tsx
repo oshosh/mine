@@ -1,9 +1,10 @@
 'use client';
 
-import { env } from '@/env.mjs';
-import { dynamicNamedImport } from '@/lib/dynamicImport';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren, useState } from 'react';
+import { env } from '@/env.mjs';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { dynamicNamedImport } from '@/lib/dynamicImport';
 
 const ReactQueryDevtools = dynamicNamedImport(
   () => import('@tanstack/react-query-devtools/build/modern/production.js'),

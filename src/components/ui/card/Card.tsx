@@ -4,24 +4,21 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const buttonVariants = cva(
-  'relative inline-block cursor-pointer overflow-hidden rounded-[50px] no-underline',
-  {
-    variants: {
-      variant: {
-        default: 'border-2 border-solid border-dark-purple text-dark-purple',
-        contents: 'border-2 border-solid border-white text-white',
-      },
-      size: {
-        default: 'px-[15px] py-[30px]',
-      },
+const buttonVariants = cva('w-1/2 bo', {
+  variants: {
+    variant: {
+      default: 'text-dark-purple border-2 border-solid border-dark-purple',
+      contents: 'text-white border-2 border-solid border-white',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
+    size: {
+      default: 'px-[15px] py-[30px]',
     },
-  }
-);
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+  },
+});
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

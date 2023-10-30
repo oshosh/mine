@@ -1,9 +1,11 @@
-import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
-import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
+import { cn, getQueryClient } from '@/lib/utils';
 import { Button, buttonVariants } from '@/components/ui/button/Button';
 import { HighlightText } from '@/components/ui/highlight-text/HighlightText';
-import { cn, getQueryClient } from '@/lib/utils';
-import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
+import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
+
 import { getKeyword } from './_lib/getKeyword';
 
 export default async function Page() {

@@ -1,5 +1,6 @@
 import { env } from '@/env.mjs';
 import { QueryFunction } from '@tanstack/query-core';
+
 import { KeywordItem } from '../../../../service/api';
 
 const getKeyword: QueryFunction<KeywordItem> = async ({ queryKey }) => {
