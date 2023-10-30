@@ -2,7 +2,7 @@ import { promises } from 'fs';
 import path from 'path';
 
 export interface KeywordItem {
-  contents: string;
+  contents: string[];
 }
 export async function getKeyword(): Promise<KeywordItem> {
   const filePath = path.join(process.cwd(), 'data', 'keyword.json');

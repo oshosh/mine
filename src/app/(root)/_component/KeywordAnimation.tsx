@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { getKeyword } from '../_lib/getKeyword';
+import { KeywordItem } from '../../../../service/api';
 
 export const KeywordAnimation = () => {
   const mainKeyWord = useRef<HTMLSpanElement | null>(null);
@@ -10,9 +11,7 @@ export const KeywordAnimation = () => {
   const delayLetter = () => new Promise((resolve) => setTimeout(resolve, 100));
   const delayWord = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const {
-    data: { contents },
-  } = useQuery<any>({
+  const { data } = useQuery<KeywordItem>({
     queryKey: ['keyword'],
     queryFn: getKeyword,
   });
@@ -21,12 +20,13 @@ export const KeywordAnimation = () => {
     let textSplit: string[][] = [];
     let count = 0;
 
-    textSplit = [...contents].reduce((acc: string[][], cur: string) => {
-      let obj: string[][] = [];
-      obj.push(cur.split(''));
-      acc = acc.concat(obj);
-      return acc;
-    }, []);
+    if (data?.contents)
+      textSplit = [...data?.contents].reduce((acc: string[][], cur: string) => {
+        let obj: string[][] = [];
+        obj.push(cur.split(''));
+        acc = acc.concat(obj);
+        return acc;
+      }, []);
 
     while (loopCount !== textSplit.length && count < textSplit[loopCount].length) {
       await delayLetter();

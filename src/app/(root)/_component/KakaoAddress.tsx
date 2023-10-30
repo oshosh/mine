@@ -1,6 +1,7 @@
 'use client';
 import Modal from '@/components/ui/modal/Modal';
 import { useModalStore } from '@/store/modal';
+import { useMemo } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 
 interface AddressProps {
@@ -11,18 +12,19 @@ interface AddressProps {
 }
 
 export default function KakaoAddress() {
-  const open = useModalStore(
-    (store) => store.modal.find((item) => item.modalID === 'daumPost')?.modalID
-  );
+  const open = useModalStore((store) => {
+    const find = store.modal.find((item) => item.modalID === 'daumPost');
+    return find?.open;
+  });
   const closed = useModalStore((store) => store.closed);
+  const daumPostSize = useMemo(
+    () => (window.innerWidth <= 760 ? window.innerWidth - 30 : '700px'),
+    []
+  );
 
-  const handleCloseClick = () => {
-    closed('daumPost');
-  };
+  const handleCloseClick = () => closed('daumPost');
 
-  const handleComplete = (data: AddressProps) => {
-    const { address, addressType, bname, buildingName } = data;
-
+  const handleComplete = ({ address, addressType, bname, buildingName }: AddressProps) => {
     let fullAddress = address;
     let extraAddress = '';
 
@@ -31,7 +33,7 @@ export default function KakaoAddress() {
         extraAddress += bname;
       }
       if (buildingName !== '') {
-        extraAddress += extraAddress !== '' ? `, ${buildingName}` : data.buildingName;
+        extraAddress += extraAddress !== '' ? `, ${buildingName}` : buildingName;
       }
       fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
@@ -49,7 +51,7 @@ export default function KakaoAddress() {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%,-50%)',
-          width: '600px',
+          width: daumPostSize,
           height: '500px',
           padding: '7px',
         }}

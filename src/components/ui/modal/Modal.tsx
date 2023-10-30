@@ -1,19 +1,22 @@
 import { cn } from '@/lib/utils';
-import React, { MouseEvent, ReactNode } from 'react';
+import React, { MouseEvent, ReactNode, useCallback } from 'react';
 
 interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose: (e: MouseEvent) => void;
   children: ReactNode;
-  opened: any;
+  opened: boolean;
   id: string;
 }
 
 export default function Modal({ onClose, children, opened = false, id }: ModalProps) {
-  const onMaskClick = (e: MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose && onClose(e);
-    }
-  };
+  const onMaskClick = useCallback(() => {
+    (e: MouseEvent) => {
+      if (e.target === e.currentTarget) {
+        onClose && onClose(e);
+      }
+    };
+  }, [onClose]);
+
   return (
     <>
       <ModalBox
