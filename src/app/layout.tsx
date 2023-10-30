@@ -6,6 +6,11 @@ import './globals.css';
 import { PropsWithChildren } from 'react';
 import { env } from '@/env.mjs';
 
+import { dynamicNamedImport } from '@/lib/dynamicImport';
+import { Toast } from '@/components/ui/toaster/Toast';
+
+// import { Toaster } from '@/components/ui/toaster/Toaster';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -36,7 +41,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
       <link rel='icon' type='image/x-icon' href='/static/favicon.ico'></link>
-      <body className={inter.className}>{children}</body>
+      <head />
+      <body className={inter.className}>
+        {children}
+        <Toast />
+      </body>
     </html>
   );
 }

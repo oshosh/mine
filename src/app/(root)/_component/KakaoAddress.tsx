@@ -18,13 +18,17 @@ export default function KakaoAddress() {
     const find = store.modal.find((item) => item.modalID === 'daumPost');
     return find?.open;
   });
-  const closed = useModalStore((store) => store.closed);
+  const closed = useModalStore((store) => {
+    return store.closed;
+  });
   const daumPostSize = useMemo(
     () => (window.innerWidth <= 760 ? window.innerWidth - 30 : '700px'),
     []
   );
 
-  const handleCloseClick = () => closed('daumPost');
+  const handleCloseClick = () => {
+    closed('daumPost');
+  };
 
   const handleComplete = ({ address, addressType, bname, buildingName }: AddressProps) => {
     let fullAddress = address;
