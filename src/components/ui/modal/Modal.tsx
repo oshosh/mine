@@ -10,13 +10,11 @@ interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function Modal({ onClose, children, opened = false, id }: ModalProps) {
-  const onMaskClick = useCallback(() => {
-    (e: MouseEvent) => {
-      if (e.target === e.currentTarget) {
-        onClose && onClose(e);
-      }
-    };
-  }, [onClose]);
+  const onMaskClick = (e: MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose && onClose(e);
+    }
+  };
 
   return (
     <>
