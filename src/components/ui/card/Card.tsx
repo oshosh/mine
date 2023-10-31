@@ -1,39 +1,51 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const buttonVariants = cva('w-1/2 bo', {
-  variants: {
-    variant: {
-      default: 'text-dark-purple border-2 border-solid border-dark-purple',
-      contents: 'text-white border-2 border-solid border-white',
-    },
-    size: {
-      default: 'px-[15px] py-[30px]',
-    },
-  },
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
-});
+type DivType = React.HTMLAttributes<HTMLDivElement>;
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+type CardProps = DivType & {
+  as?: 'div' | 'section' | 'article';
+};
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button';
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-    );
-  }
+type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & { as?: 'h1' | 'h2' | 'h3' };
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, as: Component = 'div', ...props }, ref) => (
+    <Component ref={ref} className={cn('box-border w-1/2 px-10', className)} {...props} />
+  )
 );
-Button.displayName = 'Button';
+Card.displayName = 'Card';
 
-export { Button, buttonVariants };
+const CardHeader = React.forwardRef<HTMLDivElement, DivType>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
+));
+CardHeader.displayName = 'CardHeader';
+
+const CardTitle = React.forwardRef<HTMLParagraphElement, CardTitleProps>(
+  ({ className, as: Component = 'h3', ...props }, ref) => (
+    <Component
+      ref={ref}
+      className={cn(
+        'font-noto-sans-kr inline-block text-lg font-semibold text-dark-purple',
+        className
+      )}
+      {...props}
+    />
+  )
+);
+CardTitle.displayName = 'CardTitle';
+
+const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn('space-x-2.5 text-[0.95rem] leading-[1.6rem]', className)}
+    {...props}
+  />
+));
+CardDescription.displayName = 'CardDescription';
+
+export { Card, CardHeader, CardTitle, CardDescription };
