@@ -1,18 +1,37 @@
 import * as React from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
+
+const cardVariants = cva('box-border ', {
+  variants: {
+    variant: {
+      default: 'w-full',
+      half: 'w-1/2',
+    },
+    size: {
+      default: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+  },
+});
 
 type DivType = React.HTMLAttributes<HTMLDivElement>;
 
 type CardProps = DivType & {
   as?: 'div' | 'section' | 'article';
+} & VariantProps<typeof cardVariants>;
+
+type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
+  as?: 'h1' | 'h2' | 'h3';
 };
 
-type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement> & { as?: 'h1' | 'h2' | 'h3' };
-
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, as: Component = 'div', ...props }, ref) => (
-    <Component ref={ref} className={cn('box-border w-1/2 px-10', className)} {...props} />
+  ({ variant, size, className, as: Component = 'div', ...props }, ref) => (
+    <Component ref={ref} className={cn(cardVariants({ variant, size, className }))} {...props} />
   )
 );
 Card.displayName = 'Card';
@@ -48,4 +67,4 @@ const CardDescription = React.forwardRef<
 ));
 CardDescription.displayName = 'CardDescription';
 
-export { Card, CardHeader, CardTitle, CardDescription };
+export { Card, CardHeader, CardTitle, CardDescription, cardVariants };
