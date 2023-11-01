@@ -35,10 +35,24 @@ export interface SpanProps
   search: string;
   msg: string;
   effectColor: ColorType;
+  underline: boolean;
 }
 
 const HighlightText = forwardRef<HTMLSpanElement, SpanProps>(
-  ({ className, variant, size, search, msg, effectColor, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      search,
+      msg,
+      effectColor,
+      asChild = false,
+      underline = false,
+      ...props
+    },
+    ref
+  ) => {
     const regExp = useMemo(
       () => new RegExp(`(${search.trim().replace(/ +/g, '|')})`, 'gi'),
       [search]
@@ -59,15 +73,21 @@ const HighlightText = forwardRef<HTMLSpanElement, SpanProps>(
     const Comp = asChild ? Slot : 'span';
 
     return (
-      <div className='flex'>
-        {msg.split(new RegExp(regExp, 'gi')).map((s: string, idx: number) => {
-          return (
-            <Comp className={cn(getStyle(s))} ref={ref} key={s + idx} {...props}>
-              {s}
-            </Comp>
-          );
-        })}
-      </div>
+      <h2 className='flex text-center'>
+        <span
+          className={cn(
+            underline ? 'after:inline-block after:h-[2px] after:w-[80%] after:bg-light-purple' : ''
+          )}
+        >
+          {msg.split(new RegExp(regExp, 'gi')).map((s: string, idx: number) => {
+            return (
+              <Comp className={cn(getStyle(s))} ref={ref} key={s + idx} {...props}>
+                {s}
+              </Comp>
+            );
+          })}
+        </span>
+      </h2>
     );
   }
 );

@@ -16,7 +16,6 @@ export const useModalStore = create<Modal>((set) => ({
   opened: (modalInfo: ModalData) => set((state) => ({ modal: [modalInfo, ...state.modal] })),
   closed: (currentID: string) =>
     set((state) => {
-      debugger;
       const filterData = state.modal.filter(({ modalID }) => modalID !== currentID);
       return { modal: filterData };
     }),

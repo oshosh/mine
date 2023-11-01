@@ -10,6 +10,8 @@ import {
   cardVariants,
 } from '@/components/ui/card/Card';
 import { HighlightText } from '@/components/ui/highlight-text/HighlightText';
+import { Input, InputLabel } from '@/components/ui/input/Input';
+import { Label } from '@/components/label/Label';
 import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
 import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 
@@ -44,7 +46,31 @@ export default async function Page() {
       <Button asChild className='flex justify-center'>
         <a href='https://github.com/oshosh'> 테스트</a>
       </Button>
-      <HighlightText msg='ABOUT ME' search=' B U   E' effectColor='boldLightPurple' />
+      <HighlightText msg='ABOUT ME' search=' B U   E' effectColor='boldLightPurple' underline />
+      <div>
+        {/* <Label className='text-red-500' htmlFor='password' title=''>
+          Password 테스트
+        </Label>
+        <Input id='password' type='password' value='' placeholder='비번을 입력해주세요 테스트' />
+
+        <Label className='text-red-500' htmlFor='text'>
+          Text 테스트
+        </Label>
+        <Input type='text' id='text' value='테스트 텍스트' /> */}
+
+        <InputLabel
+          label='text2 테스트'
+          type='text'
+          id='text2'
+          defaultValue='sadgsdgdsfasdfasdf'
+          placeholder='xxx'
+          labelStyle='text-red-700'
+        />
+        <Label className='text-red-500' htmlFor='text'>
+          Text 테스트
+        </Label>
+        <Input type='text' id='text' defaultValue='테스트 텍스트' />
+      </div>
       <div className='flex'>
         <Card
           className={cn(
