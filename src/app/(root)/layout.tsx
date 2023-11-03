@@ -1,5 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
+import { Hamburger } from '@/components/ui/hamburger/hamburger';
+
 import ReactQueryProvider from './_component/ReactQueryProvider';
 
 interface LayoutProps {
@@ -11,6 +13,7 @@ export default function Layout({ children, modal }: PropsWithChildren<LayoutProp
     <ReactQueryProvider>
       {children}
       {modal}
+      <Hamburger />
     </ReactQueryProvider>
   );
 }
