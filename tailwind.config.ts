@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        white2: '#eeeeee',
         'dark-purple': '#22194D',
         'light-purple': '#A2A1DC',
         'over-lay': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
+      },
+      boxShadow: {
+        'custom-dark': '0 1px 4px 0 rgba(0, 0, 0, 0.35)',
       },
       animation: {
         typing: 'keyword-typing-effect 0.1s linear infinite',

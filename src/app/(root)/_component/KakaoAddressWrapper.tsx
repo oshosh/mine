@@ -3,6 +3,8 @@
 import { useModalStore } from '@/store/modal';
 import { toast } from 'sonner';
 
+import { useToast } from '@/hooks/useToast';
+
 import KakaoAddress from './KakaoAddress';
 
 export default function KakaoAddressWrapper() {
@@ -10,6 +12,7 @@ export default function KakaoAddressWrapper() {
     (store) => store.modal.find(({ modalID }) => modalID === 'daumPost')?.modalID
   );
   const opened = useModalStore((store) => store.opened);
+  const { showToast } = useToast();
 
   const handleClick = () =>
     opened({
@@ -18,7 +21,10 @@ export default function KakaoAddressWrapper() {
     });
 
   const handleClick2 = () => {
-    toast.success('My success toast');
+    showToast({
+      description: 'My success toast',
+      type: 'error',
+    });
   };
 
   return (
