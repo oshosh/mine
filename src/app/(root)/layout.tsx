@@ -1,8 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
-import { Hamburger } from '@/components/ui/hamburger/hamburger';
-
-import ReactQueryProvider from './_component/ReactQueryProvider';
+import ReactQueryProvider from '@/components/ui/provider/ReactQueryProvider';
+import { Hamburger } from '@/components/hamburger/hamburger';
 
 interface LayoutProps {
   modal: ReactNode;

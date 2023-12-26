@@ -7,7 +7,7 @@ import { PropsWithChildren } from 'react';
 import { env } from '@/env.mjs';
 
 import { dynamicNamedImport } from '@/lib/dynamicImport';
-import { Toast } from '@/components/ui/toaster/Toast';
+import { Toast } from '@/components/toaster/Toast';
 
 // import { Toaster } from '@/components/ui/toaster/Toaster';
 

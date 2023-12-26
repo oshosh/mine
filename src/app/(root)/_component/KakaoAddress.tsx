@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useModalStore } from '@/store/modal';
 import DaumPostcode from 'react-daum-postcode';
 
-import Modal from '@/components/ui/modal/Modal';
+import Modal from '@/components/modal/Modal';
 
 interface AddressProps {
   address: string;

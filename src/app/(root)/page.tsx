@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 import { cn, getQueryClient } from '@/lib/utils';
@@ -9,9 +10,11 @@ import {
   CardTitle,
   cardVariants,
 } from '@/components/ui/card/Card';
-import { HighlightText } from '@/components/ui/highlight-text/HighlightText';
+import { ReactCarousel } from '@/components/ui/carousel/ReactCarousel';
 import { Input, InputLabel } from '@/components/ui/input/Input';
-import { Label } from '@/components/label/Label';
+import { Label } from '@/components/ui/label/Label';
+import { WorkLeftCard } from '@/components/cards/work-left-card';
+import { HighlightText } from '@/components/highlight-text/HighlightText';
 import KakaoAddressWrapper from '@/app/(root)/_component/KakaoAddressWrapper';
 import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 
@@ -26,7 +29,7 @@ export default async function Page() {
   const dehydratedState = dehydrate(queryClient);
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col bg-slate-500'>
       <div>Root Home</div>
       <KakaoAddressWrapper />
       <HydrationBoundary state={dehydratedState}>
@@ -58,6 +61,16 @@ export default async function Page() {
         </Label>
         <Input type='text' id='text' value='테스트 텍스트' /> */}
 
+        <ReactCarousel>
+          {[1].map((item) => {
+            return (
+              <div className='flex flex-row md:flex-col' key={item}>
+                <WorkLeftCard />
+                <WorkLeftCard />
+              </div>
+            );
+          })}
+        </ReactCarousel>
         <InputLabel
           label='text2 테스트'
           type='text'
