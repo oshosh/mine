@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { QueryClient } from '@tanstack/react-query';
+import { dehydrate, QueryClient, QueryFunction, QueryOptions } from '@tanstack/react-query';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -14,3 +14,18 @@ export const cn = (...inputs: ClassValue[]) => {
  * react-query
  */
 export const getQueryClient = cache(() => new QueryClient());
+
+/**
+ * react-query prefetch data
+ */
+export const prefetchQuery = async (queryKey: QueryOptions['queryKey'], queryFn: QueryFunction) => {
+  const queryClient = getQueryClient();
+
+  if (queryKey) {
+    await queryClient.prefetchQuery({
+      queryKey,
+      queryFn,
+    });
+    return dehydrate(queryClient);
+  }
+};

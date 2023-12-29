@@ -1,0 +1,21 @@
+{
+  "works": [
+    {
+      "image": {
+        "width": 200,
+        "height": 200,
+        "alt": "이미지 테스트",
+        "src": "/images/portfolio01.png"
+      },
+      "time": {
+        "from": "2019-10",
+        "end": "2021-02"
+      },
+      "description": "🚧 카드 테스트 입니다. <br /> 약간의 상세 내용 <br /> 내가 한일~~",
+      "externalSite": {
+        "href": "https://github.com/oshosh",
+        "name": "테스트"
+      }
+    }
+  ]
+}
