@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 
+// @ts-ignore
 const RemoteHeader = dynamic(() => import("shop/Header"), {
   ssr: false,
   loading: () => <div>Remote Header 로딩중…</div>,
