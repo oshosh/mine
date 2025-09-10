@@ -11,6 +11,7 @@ export default function RemoteHeaderClient(props: Props) {
   useEffect(() => {
     let mounted = true;
     (async () =>
+      // @ts-ignore
       const mod = await import("shop/Header");
       if (mounted) setComp(() => mod.default);
     })();
