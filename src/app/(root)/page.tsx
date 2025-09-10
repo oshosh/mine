@@ -35,6 +35,9 @@ export default async function Page() {
       <Button asChild className='flex justify-center'>
         <a href='https://github.com/oshosh'> 테스트</a>
       </Button>
+      <p>
+        <a href="/legacy">➡ Pages Router (/legacy) 로 이동</a>
+      </p>
       <HighlightText msg='ABOUT ME' search=' B U   E' effectColor='boldLightPurple' underline />
       <HydrationBoundary state={worksDehydratedState}>
         <WorkWrapper />
