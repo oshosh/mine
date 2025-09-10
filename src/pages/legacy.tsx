@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
 // @ts-ignore
-const RemoteHeader = dynamic(() => import("shop/Header"), {
+const RemoteHeader = dynamic(() => import('shop/Header'), {
   ssr: false,
   loading: () => <div>Remote Header 로딩중…</div>,
 });
@@ -13,4 +13,8 @@ export default function LegacyPage() {
       <RemoteHeader />
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  return { props: {} };
 }
