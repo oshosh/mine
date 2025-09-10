@@ -10,7 +10,7 @@ export default function LegacyPage() {
   return (
     <div style={{ padding: 20 }}>
       <h1>Host Pages Router (/legacy)</h1>
-      <RemoteHeader title="호스트에서 불러옴" />
+      <RemoteHeader />
     </div>
   );
 }
