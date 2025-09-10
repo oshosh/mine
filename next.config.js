@@ -10,9 +10,7 @@ module.exports = {
         remotes: {
           shop: "shop@https://remotea-z1jl.vercel.app/_next/static/chunks/remoteEntry.js"
         },
-        exposes: {
-          "./HostWidget": "./components/HostWidget.tsx"
-        },
+        exposes: {},
         shared: {
           react: { singleton: true, requiredVersion: false },
           "react-dom": { singleton: true, requiredVersion: false }
