@@ -1,20 +1,16 @@
-import dynamic from 'next/dynamic';
+// src/app/legacy/page.tsx  (RSC 파일)
+import dynamic from "next/dynamic";
 
-// @ts-ignore
-const RemoteHeader = dynamic(() => import('shop/Header'), {
+// 클라이언트 경계로 감싸서 서버에서는 절대 로드 안 함
+const RemoteHeaderClient = dynamic(() => import("@/components/RemoteHeaderClient"), {
   ssr: false,
-  loading: () => <div>Remote Header 로딩중…</div>,
 });
 
-export default function LegacyPage() {
+export default function Page() {
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Host Pages Router (/legacy)</h1>
-      <RemoteHeader />
-    </div>
+    <main style={{ padding: 20 }}>
+      <h1>App Router Host (/legacy)</h1>
+      <RemoteHeaderClient title="호스트에서 불러옴" />
+    </main>
   );
-}
-
-export async function getServerSideProps() {
-  return { props: {} };
 }
