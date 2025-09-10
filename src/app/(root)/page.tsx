@@ -9,6 +9,7 @@ import { KeywordAnimation } from '@/app/(root)/_component/KeywordAnimation';
 import WorkWrapper from './_component/work/WorkWrapper';
 import { getKeyword } from './_lib/getKeyword';
 import { getWorks } from './_lib/getWorks';
+import Link from 'next/link';
 
 export default async function Page() {
   const keywordDehydratedState = await prefetchQuery(['keyword'], getKeyword);
@@ -36,7 +37,9 @@ export default async function Page() {
         <a href='https://github.com/oshosh'> 테스트</a>
       </Button>
       <p>
-        <a href="/legacy">➡ Pages Router (/legacy) 로 이동</a>
+        <Link href="/legacy" prefetch={false}>
+          ➡ Pages Router (/legacy) 로 이동
+        </Link>
       </p>
       <HighlightText msg='ABOUT ME' search=' B U   E' effectColor='boldLightPurple' underline />
       <HydrationBoundary state={worksDehydratedState}>
