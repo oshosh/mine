@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const RemoteHeader = dynamic(() => import('shop/Header'), {
+const RemoteHeader: any = dynamic(() => import('shop/Header'), {
   ssr: false,
   loading: () => <div>Remote Header 로딩중…</div>,
 });
